@@ -178,7 +178,7 @@ async def schedule_update():
         await asyncio.sleep(wait_time)
         channel = client.get_channel(1146380714573574224)
         channel2 = client.get_channel(547554609355423755)
-        ny = None
+        newYear = None
         with open("civchaosyear.json","r") as year:
             newYear = json.load(year)
             newYear["Year"] += 1
