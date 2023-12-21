@@ -268,10 +268,6 @@ async def leaderboard_error(ctx, error):
     await ctx.send(error)
 
 @client.command()
-async def newtest(ctx):
-    await ctx.send('German.\nPolish.')
-
-@client.command()
 async def raw(ctx):
     nations = await process_nation()
     await ctx.send(nations)
@@ -409,8 +405,8 @@ async def rename(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6
             else:
                 nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3 + " " + arg4 + " " + arg5 + " " + arg6 + " " + arg7 + " " + arg8
             await ctx.send(f"You have renamed your nation to {nations[str(ctx.author.id)]['Name']}.")
-            with open("civchaos.json","w") as war:
-                json.dump(nations,war)
+            with open("civchaos.json","w") as ww:
+                json.dump(nations,ww)
     else:
         await ctx.send("You don't have a nation!")
 
@@ -485,8 +481,8 @@ async def found(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6=
             nations[str(ctx.author.id)]["toys"] = 0
             nations[str(ctx.author.id)]["wood"] = 12
             await ctx.send(f"{nations[str(ctx.author.id)]['Name']} has been founded")
-            with open("civchaos.json","w") as war:
-                json.dump(nations,war)
+            with open("civchaos.json","w") as ww:
+                json.dump(nations,ww)
 
 @found.error
 async def founderror(ctx, error):
@@ -536,8 +532,8 @@ async def nation(player):
         return False
 
 async def process_nation():
-    with open("civchaos.json","r") as troll:
-        nations = json.load(troll)
+    with open("civchaos.json","r") as ll:
+        nations = json.load(ll)
     return nations
 
 
