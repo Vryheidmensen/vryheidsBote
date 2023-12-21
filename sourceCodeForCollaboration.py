@@ -233,8 +233,8 @@ async def schedule_update():
             nation["actions"] = int(nation["actions"] * 0.9)
             await channel.send(to_send)
             await channel2.send(to_send)
-        with open("civchaos.json","w") as war:
-                json.dump(nations,war)
+        with open("civchaos.json","w") as ww:
+                json.dump(nations,ww)
 
 async def process_consumption(nation, building, item, consume):
     if consume * nation[building] > nation[item]:
