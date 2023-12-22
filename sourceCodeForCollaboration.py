@@ -33,7 +33,7 @@ build_list = [{"Name":"Crop field","alias":["crop_field", "cropfield", "crop_fie
              {"Name":"Algae farm","alias":["algae_farm", "algae_farms", "algae"],"price":[("timber", 6), ("stone", 5), ("iron", 4), ("treasury", 21000)],"production":[("fish", 12)], "consumption":[],"description":"An algae farm gathers algae in high yields. Fish can be used for human feed."},
              {"Name":"Seaweed farm","alias":["seaweed_farm", "seaweed_farms", "seaweed"],"price":[("steel", 6), ("concrete", 4), ("treasury", 60000)],"production":[("fish", 25)], "consumption":[],"description":"A seaweed farm gathers seaweed in high yields. Fish can be used for human feed."},
              {"Name":"Tree plantation","alias":["tree_plantation", "tree_plantations", "plantation", "plantations", "lumberjack", "lumberjacks"],"price":[("wood", 12), ("stone", 4), ("iron", 2), ("treasury", 12000)],"production":[("wood", 7)], "consumption":[],"description":"A tree plantation can be used to cultivate alder, beech, or conifer. Wood can be used for construction, or processed into timber."},
-             {"Name":"Tree sapling field","alias":["tree_sapling_field", "tree_sapling_fields", "tree_field", "tree_fields", "tree_sapling", "tree_saplings", "sapling", "saplings"],"alias":[("wood", 6), ("stone", 2), ("treasury", 6000)],"production":[("wood", 3)], "consumption":[],"description":"A field can be used to plant tree saplings. Wood can be used for construction, or processed into timber."},
+             {"Name":"Tree sapling field","alias":["tree_sapling_field", "tree_sapling_fields", "tree_field", "tree_fields", "tree_sapling", "tree_saplings", "sapling", "saplings"],"price":[("wood", 6), ("stone", 2), ("treasury", 6000)],"production":[("wood", 3)], "consumption":[],"description":"A field can be used to plant tree saplings. Wood can be used for construction, or processed into timber."},
              {"Name":"Sawmill","alias":["sawmill", "sawmills"],"price":[("wood", 10), ("iron", 1), ("treasury", 9000)],"production":[("timber", 4)], "consumption":[("wood", 4)],"description":"A sawmill planes wood into lumber. Planed timber can be used for construction. Sawmills need a supply of wood to operate."},
              {"Name":"Biomass pellet plant","alias":["biomass_pellet_plant", "biomass_pellet_plants", "biomass_plant", "biomass_plants", "pellet_plant", "pellet_plants", "biomass", "pellet", "pellets", "bio"],"price":[("timber", 8), ("steel", 6), ("concrete", 3), ("treasury", 60000)],"production":[("paper", 20)], "consumption":[("wood", 14)],"description":"A biomass pellet plant processes wood into biomass pellets. Paper can be used for printing. Biomass pellet plants need a supply of wood to operate."},
              {"Name":"Engineered wood plant","alias":["engineered_wood_plant", "engineered_wood_plants", "wood_plant", "wood_plants", "engineered", "eng"],"price":[("timber", 6), ("steel", 3), ("concrete", 2), ("treasury", 20000)],"production":[("timber", 10)], "consumption":[("wood", 8)],"description":"An engineered wood plant engineers wood into lumber. Timber can be used for construction. Engineered wood plants need a supply of wood to operate."},
@@ -71,7 +71,24 @@ build_list = [{"Name":"Crop field","alias":["crop_field", "cropfield", "crop_fie
              {"Name":"Artillery factory","alias":["artillery_factory", "artillery_factories"],"price":[("steel", 25), ("concrete", 10), ("treasury", 160000)],"production":[("artillery", 10)], "consumption":[("steel", 20)],"description":"An artillery factory manufactures artillery for warfare. Artillery factories need a supply of steel to operate."},
              {"Name":"Concrete factory","alias":["concrete_factory", "concrete_factories"],"price":[("steel", 10), ("stone", 15), ("treasury", 66000)],"production":[("concrete", 12)], "consumption":[("stone", 10)],"description":"A concrete factory manufactures concrete for infrastructure. Concrete factories need a supply of stone to operate."},
              {"Name":"Firearms factory","alias":["firearms_factory", "firearms_factories", "firearm_factory", "firearm_factories", "small_arms_factory", "small_arms_factories"],"price":[("stone", 15), ("steel", 6), ("timber", 10), ("treasury", 120000)],"production":[("firearms", 36)], "consumption":[("timber", 6), ("steel", 20)],"description":"A firearms factory manufactures firearms for profit (if personal firearm possession is legal in your country) and for warfare. Firearms factories need supplies of timber and steel to operate."},
-             {"Name":"Market","alias":["market", "markets"],"price":[("wood", 12), ("stone", 4), ("treasury", 4000)],"production":[("actions", random.randrange(15,20)), ("treasury", random.randrange(2500,8076))], "consumption":[],"description":"The town market is the hub of economic activity for a small economy."}]
+             {"Name":"Market",
+             "alias":["market", "markets"],
+             "price":[("wood", 12), ("stone", 4), ("treasury", 4000)],
+             "production":[("actions", random.randrange(15,20)), ("treasury", random.randrange(2500,8076))],
+             "consumption":[],
+             "description":"The town market is the hub of economic activity for a small economy."},
+             {"Name":"Industrial Park",
+             "alias":["industrial_park", "industrial_zone", "industrial_zones", "industrial_parks"],
+             "price":[("timber", 16), ("concrete", 12), ("steel", 8), ("treasury", 40000)],
+             "production":[("actions", random.randrange(45,70)), ("treasury", random.randrange(16000,25000))],
+             "consumption":[],
+             "description":"The industrial park is the modern way to zone factories together."},
+             {"Name":"Central Business District",
+             "alias":["central_business_district","city_centre","city_center","downtown","wall_street"],
+             "price":[("gold", 4), ("concrete", 20), ("steel", 24), ("copper", 2), ("glass", 6), ("treasury", 120000)],
+             "production":[("actions", random.randrange(120,200)), ("treasury", random.randrange(120000,180000))],
+             "consumption":[("gold", 1)],
+             "description":"The Central Business District is the nucleus of the city."}]
 
 @client.event
 async def on_ready():
