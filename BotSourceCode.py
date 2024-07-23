@@ -4,6 +4,7 @@ import random
 import json
 import datetime
 import asyncio
+import validators
 
 intents = discord.Intents.all()
 
@@ -206,9 +207,9 @@ async def today(ctx):
 #Outdated
 @client.command()
 async def buildings(ctx):
-    board = discord.Embed(title="Building List (Page 1)")
-    embed = discord.Embed(title="Building List (Page 2)")
-    three = discord.Embed(title="Building List (Page 3)")
+    board1 = discord.Embed(title="Building List (Page 1)")
+    board2 = discord.Embed(title="Building List (Page 2)")
+    board3 = discord.Embed(title="Building List (Page 3)")
     counter = 0
     for building in build_list:
         counter += 1
@@ -432,38 +433,208 @@ async def inventory(ctx):
 async def inverror(ctx, error):
     await ctx.send(error)
 
-#Outdated
+
 @client.command()
-async def rename(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6=None, arg7=None, arg8=None):
+async def customize(ctx, arg=None):
     founded = await nation(ctx.author)
     if founded:
-        if arg==None:
-            await ctx.send("Provide a new name for your nation and try again.")
-        else:
-            nations = await process_nation()
-            if arg2==None:
-                nations[str(ctx.author.id)]["Name"] = arg
-            elif arg3==None:
-                nations[str(ctx.author.id)]["Name"] = arg + " " + arg2
-            elif arg4==None:
-                nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3
-            elif arg5==None:
-                nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3 + " " + arg4
-            elif arg6==None:
-                nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3 + " " + arg4 + " " + arg5
-            elif arg7==None:
-                nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3 + " " + arg4 + " " + arg5 + " " + arg6
-            elif arg8==None:
-                nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3 + " " + arg4 + " " + arg5 + " " + arg6 + " " + arg7
+        nations = await process_nation()
+        if arg == 'common_name' or arg == 'nickname' or arg == 'nick' or arg == 'common':
+            await ctx.send("Enter a common name for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.)")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                common_name = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
             else:
-                nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3 + " " + arg4 + " " + arg5 + " " + arg6 + " " + arg7 + " " + arg8
-            await ctx.send(f"You have renamed your nation to {nations[str(ctx.author.id)]['Name']}.")
-            with open("civchaos.json","w") as database:
-                json.dump(nations,database)
+                if common_name.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(common_name.content):
+                    await ctx.send("You can't set a link as your common name!")
+                    return
+                else:
+                    await ctx.send(f'Common name set to {common_name.content}.')
+                    nations[str(ctx.author.id)]["Common Name"] = common_name.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        elif arg == 'rename' or arg == 'new_name' or arg == 'name' or arg == 'full_name' or arg == 'official_name':
+            await ctx.send("Enter an official name for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.)")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                official_name = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if official_name.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(official_name.content):
+                    await ctx.send("You can't set a link as your official name!")
+                    return
+                else:
+                    await ctx.send(f'Official name set to {official_name.content}.')
+                    nations[str(ctx.author.id)]["Name"] = official_name.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        elif arg == 'flag' or arg == 'banner':
+            await ctx.send("Enter a **URL** for your nation's flag. (Timeout = 5 minutes, send 'Cancel' to cancel.) Please do not upload graphic content or your nation may be deleted.")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                new_flag = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if new_flag.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(new_flag.content):
+                    await ctx.send('Flag set.')
+                    nations[str(ctx.author.id)]["Flag"] = new_flag.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+                else:
+                    await ctx.send('Not a valid URL!')
+                    return
+        elif arg == 'motto' or arg == 'slogan':
+            await ctx.send("Enter a motto for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.)")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                motto = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if motto.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(motto.content):
+                    await ctx.send("You can't set a link as your motto!")
+                    return
+                else:
+                    await ctx.send(f'Motto set to {motto.content}.')
+                    nations[str(ctx.author.id)]["Motto"] = motto.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        elif arg == 'demonym':
+            await ctx.send("Enter a singular demonym for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.)")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                demonym = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if demonym.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(demonym.content):
+                    await ctx.send("You can't set a link as your singular demonym!")
+                    return
+                else:
+                    await ctx.send(f'Singular demonym set to {demonym.content}.')
+                    nations[str(ctx.author.id)]["Demonym"] = demonym.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        elif arg == 'demonym_plural' or arg == 'plural':
+            await ctx.send("Enter a plural demonym for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.)")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                demonym_plural = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if demonym_plural.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(demonym_plural.content):
+                    await ctx.send("You can't set a link as your plural demonym!")
+                    return
+                else:
+                    await ctx.send(f'Plural demonym set to {demonym_plural.content}.')
+                    nations[str(ctx.author.id)]["Plural Demonym"] = demonym_plural.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        elif arg == 'demonym_adjective' or arg == 'adjective':
+            await ctx.send("Enter an adjective demonym for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                demonym_adjective = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if demonym_adjective.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(demonym_adjective.content):
+                    await ctx.send("You can't set a link as your demonym adjective!")
+                    return
+                else:
+                    await ctx.send(f'Demonym adjective set to {demonym_adjective.content}.')
+                    nations[str(ctx.author.id)]["Demonym Adjective"] = demonym_adjective.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        elif arg == 'currency' or arg == 'money':
+            await ctx.send("Enter a currency name for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                currency = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if currency.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(currency.content):
+                    await ctx.send("You can't set a link as your currency!")
+                    return
+                else:
+                    await ctx.send(f'Currency set to {currency.content}.')
+                    nations[str(ctx.author.id)]["Currency"] = currency.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        elif arg == 'currency_plural' or arg == 'money_plural':
+            await ctx.send("Enter a currency plural name for your nation. (Timeout = 5 minutes, send 'Cancel' to cancel.")
+            def check(response):
+                return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+            try:
+                currency_plural = await client.wait_for('message', check=check, timeout=300.0)
+            except asyncio.TimeoutError:
+                return
+            else:
+                if currency_plural.content.lower() == ('cancel'):
+                    await ctx.send('Prompt cancelled.')
+                    return
+                elif validators.url(currency_plural.content):
+                    await ctx.send("You can't set a link as your currency plural!")
+                    return
+                else:
+                    await ctx.send(f'Currency plural set to {currency_plural.content}.')
+                    nations[str(ctx.author.id)]["Currency-Plural"] = currency_plural.content
+                    with open("civchaos.json","w") as database:
+                        json.dump(nations,database)
+        else:
+            board = discord.Embed(title='Customization Options')
+            board.add_field(name='Official Name (!customize rename)', value='Customize the full name of your nation. Example: United States of America')
+            board.add_field(name='Common name (!customize common_name)', value='Customize the short name of your nation. Example: America')
+            board.add_field(name='Flag (!customize flag)', value='Customize the flag representing your nation.')
+            board.add_field(name='Motto (!customize motto)', value='Customize the motto of your nation. Example: From many, one.')
+            board.add_field(name='Demonym (!customize demonym)', value='Customize the demonym of your nation.\n"I\'m a proud American!"')
+            board.add_field(name='Plural Demonym (!customize demonym_plural)', value='Customize the plural demonym of your nation.\n"Here come the Americans!"')
+            board.add_field(name='Adjective Demonym (!customize demonym_adjective)', value='Customize the adjective demonym of your nation.\n"I\'m proud to be American!"')
+            board.add_field(name='Currency (!customize currency)', value='Customize your nation\'s currency name. Example: Dollar')
+            board.add_field(name='Currency Plural (!customize currency_plural)', value='Customize your nation\'s currency plural name. Example: Dollars')
+            await ctx.send(embed=board)
     else:
         await ctx.send("You don't have a nation!")
 
-#Should be multistep
+#Rework this command
 @client.command()
 async def found(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6=None, arg7=None, arg8=None):
     if arg==None:
