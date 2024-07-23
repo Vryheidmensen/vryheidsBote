@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from discord import FFmpegPCMAudio
 import random
 import json
 import datetime
@@ -10,10 +9,11 @@ intents = discord.Intents.all()
 
 client = commands.Bot(command_prefix = '!', intents=intents)
 
-#Feeding a population: Crops feed 100,000 per capita per turn, Meat feeds 160,000 per capita per turn, processed Food feeds 800,000 per capita per turn
+#Lines 16-195 should be a config file
+
+#Feeding a population, per capita, per turn: Crops feed TBD, Meat feeds TBD, processed Food feeds TBD
 
 grinder = ["bauxite", "bauxite", "bauxite", "bauxite", "iron", "iron", "iron", "iron", "iron", "iron", "iron", "iron", "iron", "copper", "copper", "copper", "copper", "silver", "silver", "gold"]
-
 rotary = ["bauxite", "bauxite", "bauxite", "copper", "copper", "copper", "iron", "iron", "iron", "iron", "iron", "iron", "iron", "iron", "iron", "iron", "silver", "silver", "silver", "gold"]
 
 feeding = [("crops", 100000), ("meat", 180000), ("fish", 120000), ("seafood", 700000), ("food", 900000), ("pastries", 400000), ("lemonade", 400000)]
@@ -199,70 +199,11 @@ async def on_ready():
 	print("---------------------")
 	await schedule_update()
 
-
 @client.command()
 async def today(ctx):
     await ctx.send(datetime.datetime.now)
 
-@client.event
-async def on_member_join(member):
-        if member.guild.system_channel is not None:
-                await member.guild.system_channel.send(f'{member.mention} has joined {member.guild.name}.')
-
-@client.event
-async def on_member_remove(member):
-        if member.guild.system_channel is not None:
-            await member.guild.system_channel.send(f'{member.name} is a traitor')
-
-@client.event
-async def on_voice_state_update(member, before, after):
-        channel = client.get_channel(1129194438212726845)
-        await channel.send(f'{member.name} has updated voice state in {member.guild.name}')
-
-@client.event
-async def on_reaction_add(reaction, user):
-        channel = client.get_channel(1129194438212726845)
-        await channel.send(f'{user.name} has reacted with {reaction.emoji} in {user.guild.name}')
-
-@client.event
-async def on_reaction_remove(reaction, user):
-        channel = client.get_channel(1129194438212726845)
-        await channel.send(f'{user.name} has unreacted in {user.guild.name}')
-
-@client.event
-async def on_thread_create(thread):
-        channel = client.get_channel(1129194438212726845)
-        await channel.send(f'{thread.name} has been created in {thread.guild.name}')
-
-@client.command()
-async def guildinfo(ctx):
-    await ctx.send(f'{ctx.guild.name} has {ctx.guild.member_count} members and is owned by {ctx.guild.owner.name}. It was created at {ctx.guild.created_at}. Its AFK channel is {ctx.guild.afk_channel} with an AFK timeout of {ctx.guild.afk_timeout} seconds, and its System channel is {ctx.guild.system_channel}. Its explicit content filter is {ctx.guild.explicit_content_filter}. Its bitrate limit is {ctx.guild.bitrate_limit} and its emoji limit is {ctx.guild.emoji_limit} and its sticker limit is {ctx.guild.sticker_limit} and its filesize limit is {ctx.guild.filesize_limit} bytes. It is {ctx.guild.chunked} that the guild is chunked, and {ctx.guild.large} that it is large. Its default notification settings are {ctx.guild.default_notifications} and its authentication level is {ctx.guild.mfa_level} and its rating is {ctx.guild.nsfw_level}. Its description states: "{ctx.guild.description}".')
-
-@client.command()
-async def userinfo(ctx):
-    await ctx.send(f'{ctx.author.name} joined this server at {ctx.author.joined_at}.')
-
-@client.command()
-async def connect(ctx):
-        if (ctx.author.voice):
-                voice = await ctx.author.voice.channel.connect()
-                await ctx.message.add_reaction('✅')
-                await ctx.send("Connected. To play a radio program, send 'start [program number]'. Send `!start` (without succeeding argument) to retrieve a list of available radio programs.")
-        else:
-                await ctx.send("Consider joining a voice channel first.")
-
-@client.command()
-async def disconnect(ctx):
-        if (ctx.voice_client):
-                await ctx.guild.voice_client.disconnect()
-                await ctx.message.add_reaction('✅')
-        else:
-                await ctx.send("You can't disconnect me if I am not connected!")
-
-@client.command()
-async def nowplaying(ctx):
-    await ctx.send(f'Now playing {playing_now}.')
-
+#Outdated
 @client.command()
 async def buildings(ctx):
     board = discord.Embed(title="Building List (Page 1)")
@@ -272,23 +213,14 @@ async def buildings(ctx):
     for building in build_list:
         counter += 1
         if counter < 25:
-            board.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
+            board1.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
         elif counter < 43:
-            embed.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
+            board2.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
         else:
-            three.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
-    await ctx.send(embed=board)
-    await ctx.send(embed=embed)
-    await ctx.send(embed=three)
-
-@start.error
-async def start_error(ctx, error):
-    await ctx.send("Command failed. If the bot is not connected to a voice channel, connect it and try again. If you are trying to switch radio programs, please disconnect and reconnect the bot, then try again.")
-
-@client.command()
-async def stop(ctx):
-    voice = discord.utils.get(client.voice_clients,guild=ctx.guild)
-    voice.stop()
+            board3.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
+    await ctx.send(embed=board1)
+    await ctx.send(embed=board2)
+    await ctx.send(embed=board3)
 
 async def schedule_update():
     while True:
@@ -299,11 +231,11 @@ async def schedule_update():
         channel = client.get_channel(1146380714573574224)
         channel2 = client.get_channel(547554609355423755)
         newYear = None
-        with open("civchaosyear.json","r") as year:
-            newYear = json.load(year)
+        with open("civchaosyear.json","r") as gamedata:
+            newYear = json.load(gamedata)
             newYear["Year"] += 1
-        with open("civchaosyear.json","w") as year:
-            json.dump(newYear,year)
+        with open("civchaosyear.json","w") as gamedata:
+            json.dump(newYear,gamedata)
         await channel.send(f'It is now the year {newYear["Year"]} in Civilized Chaos!')
         nations = await process_nation()
         for nation in nations.values():
@@ -353,15 +285,14 @@ async def schedule_update():
             nation["actions"] = int(nation["actions"] * 0.9)
             await channel.send(to_send)
             await channel2.send(to_send)
-        with open("civchaos.json","w") as ww:
-                json.dump(nations,ww)
+        with open("civchaos.json","w") as database:
+                json.dump(nations,database)
 
 async def process_consumption(nation, building, item, consume):
     if consume * nation[building] > nation[item]:
         return False, item
     else:
         return True, item
-
 
 @client.command()
 async def leaderboard(ctx, arg=None):
@@ -387,6 +318,7 @@ async def leaderboard(ctx, arg=None):
 async def leaderboard_error(ctx, error):
     await ctx.send(error)
 
+#Experimental command
 @client.command()
 async def raw(ctx):
     nations = await process_nation()
@@ -500,6 +432,7 @@ async def inventory(ctx):
 async def inverror(ctx, error):
     await ctx.send(error)
 
+#Outdated
 @client.command()
 async def rename(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6=None, arg7=None, arg8=None):
     founded = await nation(ctx.author)
@@ -525,11 +458,12 @@ async def rename(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6
             else:
                 nations[str(ctx.author.id)]["Name"] = arg + " " + arg2 + " " + arg3 + " " + arg4 + " " + arg5 + " " + arg6 + " " + arg7 + " " + arg8
             await ctx.send(f"You have renamed your nation to {nations[str(ctx.author.id)]['Name']}.")
-            with open("civchaos.json","w") as ww:
-                json.dump(nations,ww)
+            with open("civchaos.json","w") as database:
+                json.dump(nations,database)
     else:
         await ctx.send("You don't have a nation!")
 
+#Should be multistep
 @client.command()
 async def found(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6=None, arg7=None, arg8=None):
     if arg==None:
@@ -601,8 +535,8 @@ async def found(ctx, arg=None, arg2=None, arg3=None, arg4=None, arg5=None, arg6=
             nations[str(ctx.author.id)]["toys"] = 0
             nations[str(ctx.author.id)]["wood"] = 12
             await ctx.send(f"{nations[str(ctx.author.id)]['Name']} has been founded")
-            with open("civchaos.json","w") as ww:
-                json.dump(nations,ww)
+            with open("civchaos.json","w") as database:
+                json.dump(nations,database)
 
 @found.error
 async def founderror(ctx, error):
@@ -633,14 +567,14 @@ async def experror(ctx, error):
     await ctx.send(error)
 
 async def savedata(data):
-    with open("civchaos.json","w") as datafile:
-        json.dump(data,datafile)
+    with open("civchaos.json","w") as database:
+        json.dump(data,database)
 
 async def process_purchase(player,change = 0,mode = "treasury"):
     nations = await process_nation()
     nations[str(player.id)][mode] += change
-    with open("civchaos.json","w") as natl:
-        json.dump(nations,natl)
+    with open("civchaos.json","w") as database:
+        json.dump(nations,database)
     bal = [nations[str(player.id)]["treasury"],nations[str(player.id)]["land"]]
     return bal
 
@@ -652,8 +586,8 @@ async def nation(player):
         return False
 
 async def process_nation():
-    with open("civchaos.json","r") as ll:
-        nations = json.load(ll)
+    with open("civchaos.json","r") as database:
+        nations = json.load(database)
     return nations
 
 
