@@ -206,7 +206,7 @@ async def today(ctx):
 
 #Outdated
 @client.command()
-async def buildings(ctx):
+async def buildingsold(ctx):
     board1 = discord.Embed(title="Building List (Page 1)")
     board2 = discord.Embed(title="Building List (Page 2)")
     board3 = discord.Embed(title="Building List (Page 3)")
@@ -222,6 +222,17 @@ async def buildings(ctx):
     await ctx.send(embed=board1)
     await ctx.send(embed=board2)
     await ctx.send(embed=board3)
+
+#WIP
+@client.command()
+async def buildings(ctx, arg=None):
+    if arg == None:
+        board = discord.Embed(title="Buildings Lists (EXPERIMENTAL, USE !buildingsold (might be broken))")
+        board.add_field(name='!buildings agricultural', value='Buildings specializing in agriculture: The growth of grain, vegetables, livestock, cotton, and fish. Processing into food and textiles.')
+        board.add_field(name='!buildings forestry', value='Buildings specializing in forestry: The harvest of trees. Processing into paper and lumber.')
+        board.add_field(name='!buildings mining', value='Buildings specializing in mining: The extraction of stone, coal, and ore. Processing into concrete, metals, minerals, and electricity.')
+        board.add_field(name='!buildings drilling', value='Buildings specializing in drilling: The extraction of crude oil. Processing into plastic and petroleum.')
+        await ctx.send(embed=board)
 
 async def schedule_update():
     while True:
