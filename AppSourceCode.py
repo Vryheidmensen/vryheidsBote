@@ -22,163 +22,269 @@ feeding = [("crops", 100000), ("meat", 180000), ("fish", 120000), ("seafood", 70
 materials = ["aluminium", "ammunition", "artillery", "bauxite", "books", "cars", "clothing", "concrete", "copper", "crops", "electronics", "firearms", "fish", "flour", "food", "fuel", "furniture", "glass", "gold", "household plastic", "houses", "iron", "lemonade", "meat", "oil", "ore", "paper", "pastries", "petroleum", "plastic",
              "seafood", "ships", "silver", "sneakers", "steel", "stone", "timber", "tissues", "toys", "wood"]
 
-build_list = [{"Name":"Grain field","alias":["grain_field", "grainfield", "grain_fields", "farm", "crop_field"],"type":"Agriculture",
-               "price":[("wood", 12), ("treasury", 6400)],"production":[("grain", 12)], "consumption":[],"workers":400,
+build_list = [{"Name":"Grain field",
+               "alias":["grain_field", "grainfield", "grain_fields", "farm", "crop_field"],
+               "type":"Agriculture",
+               "price":[("wood", 12), ("treasury", 6400)],"production":[("grain", 120)], "consumption":[],"workers":400,
                "description":"A field can be used to cultivate wheat, potato, or corn. Crops can be used for human feed, animal fodder, textile manufacturing, or processing into other products."},
-              {"Name":"Fruit field","alias":["fruit_field", "fruitfield", "fruit_fields"],"type":"Agriculture",
-               "price":[("wood", 5), ("treasury", 3200)],"production":[("vegetables", 6)], "consumption":[],
+              {"Name":"Fruit field",
+               "alias":["fruit_field", "fruitfield", "fruit_fields"],
+               "type":"Agriculture",
+               "price":[("wood", 5), ("treasury", 3200)],"production":[("vegetables", 75)], "consumption":[],
                "description":"A field can be used to cultivate apples, oranges, or pears. Fruits can be used for human feed,"},
-              {"Name":"Cotton plantation","alias":["cotton_plantation", "cotton_plantations"],"type":"Agriculture",
+              {"Name":"Cotton plantation",
+               "alias":["cotton_plantation", "cotton_plantations"],
+               "type":"Agriculture",
                "price":[("wood", 7), ("treasury", 5600)],"production":[("cotton", 5)], "consumption":[],
                "description":"A cotton plantation can be used to cultivate cotton. Cotton can be used for textiles."},
-              {"Name":"Pasture","alias":["pasture", "pastures", "animal_farm", "animal_pasture"],"type":"Agriculture",
-               "price":[("wood", 8), ("treasury", 6000)],"production":[("meat", 5), ("hide", 2)], "consumption":[("grain", 6)],
+              {"Name":"Pasture",
+               "alias":["pasture", "pastures", "animal_farm", "animal_pasture"],
+               "type":"Agriculture",
+               "price":[("wood", 8), ("treasury", 6000)],"production":[("meat", 50), ("hide", 2)], "consumption":[("grain", 60)],
                "description":"A pasture can be used to graze cows, pigs, sheep, or chicken. Animals turn into meat, which can be used for human feed. Pastures need a supply of grain to operate."},
-              {"Name":"Cattle shed","alias":["cattle_shed", "cattle_sheds", "shed", "sheds", "cattleshed", "cattlesheds"],"type":"Agriculture",
+              {"Name":"Cattle shed",
+               "alias":["cattle_shed", "cattle_sheds", "shed", "sheds", "cattleshed", "cattlesheds"],
+               "type":"Agriculture",
                "price":[("timber", 6), ("iron", 3), ("treasury", 15000)],"production":[("meat", 7), ("hide", 3)], "consumption":[("grain", 12)],
                "description":"A cattle shed can be used for raising cattle. Animals turn into meat and leather products, which can be used for human feed and textiles. Cattle sheds need a supply of crops to operate."},
-              {"Name":"Flour mill","alias":["flour_mill", "flour_mills", "flourmill", "flourmills"],"type":"Agriculture",
+              {"Name":"Flour mill",
+               "alias":["flour_mill", "flour_mills", "flourmill", "flourmills"],
+               "type":"Agriculture",
                "price":[("timber", 8), ("iron", 2), ("treasury", 14000)],"production":[("flour", 4)], "consumption":[("crops", 2)],
                "description":"A flour mill grinds crops into flour. Flour can be processed into pastries. Flour mills need a supply of crops to operate."},
-              {"Name":"Milking parlor","alias":["milking_parlor", "milking_parlors"],"type":"Agriculture",
+              {"Name":"Milking parlor",
+               "alias":["milking_parlor", "milking_parlors"],
+               "type":"Agriculture",
                "price":[("steel", 3), ("concrete", 1), ("timber", 2), ("treasury", 24000)],"production":[("dairy", 9)], "consumption":[("crops", 6)],
                "description":"A milking parlor milks cows into dairy products, which can be used for human feed. Milking parlors need a supply of crops to operate."},
-              {"Name":"Mechanized milking parlor","alias":["milking_parlor", "milking_parlors"],"type":"Agriculture",
+              {"Name":"Mechanized milking parlor",
+               "alias":["milking_parlor", "milking_parlors"],
+               "type":"Agriculture",
                "price":[("steel", 3), ("concrete", 1), ("timber", 2), ("treasury", 24000)],"production":[("dairy", 9)], "consumption":[("crops", 6)],
                "description":"A milking parlor milks cows into dairy products, which can be used for human feed. Milking parlors need a supply of crops to operate."},
-              {"Name":"Slaughterhouse","alias":["slaughterhouse", "slaughterhouses", "slaughterhomes", "slaughter", "slaughters"],"type":"Agriculture",
+              {"Name":"Slaughterhouse",
+               "alias":["slaughterhouse", "slaughterhouses", "slaughterhomes", "slaughter", "slaughters"],
+               "type":"Agriculture",
                "price":[("steel", 6), ("concrete", 3), ("gold", 1), ("treasury", 56000)],"production":[("meat", 36)], "consumption":[("crops", 18)],
                "description":"A slaughterhouse slaughters animals into meat, which can be used for human feed. Slaughterhouses need a supply of crops to operate."},
-              {"Name":"Fishery","alias":["fishery", "fisheries"],"type":"Agriculture",
+              {"Name":"Fishery",
+               "alias":["fishery", "fisheries"],
+               "type":"Agriculture",
                "price":[("wood", 3), ("iron", 1), ("treasury", 2000)],"production":[("fish", 1)], "consumption":[],
                "description":"A fishing harbor catches fish from the water. Fish can be used for human feed."},
-              {"Name":"Fish farm","alias":["fish_farm", "fish_farms"],"type":"Agriculture",
+              {"Name":"Fish farm",
+               "alias":["fish_farm", "fish_farms"],
+               "type":"Agriculture",
                "price":[("timber", 2), ("iron", 3), ("stone", 3), ("treasury", 9000)],"production":[("fish", 4)], "consumption":[],
                "description":"A fish farm gathers fish in high yields. Fish can be used for human feed."},
-              {"Name":"Algae farm","alias":["algae_farm", "algae_farms", "algae"],"type":"Agriculture",
+              {"Name":"Algae farm",
+               "alias":["algae_farm", "algae_farms", "algae"],
+               "type":"Agriculture",
                "price":[("timber", 6), ("stone", 5), ("iron", 4), ("treasury", 21000)],"production":[("fish", 12)], "consumption":[],
                "description":"An algae farm gathers algae in high yields. Fish can be used for human feed."},
-              {"Name":"Seaweed farm","alias":["seaweed_farm", "seaweed_farms", "seaweed"],"type":"Agriculture",
+              {"Name":"Seaweed farm",
+               "alias":["seaweed_farm", "seaweed_farms", "seaweed"],
+               "type":"Agriculture",
                "price":[("steel", 6), ("concrete", 4), ("treasury", 60000)],"production":[("fish", 25)], "consumption":[],
                "description":"A seaweed farm gathers seaweed in high yields. Fish can be used for human feed."},
-              {"Name":"Tree plantation","alias":["tree_plantation", "tree_plantations", "plantation", "plantations", "lumberjack", "lumberjacks"],"type":"Forestry",
+              {"Name":"Tree plantation",
+               "alias":["tree_plantation", "tree_plantations", "plantation", "plantations", "lumberjack", "lumberjacks"],
+               "type":"Forestry",
                "price":[("wood", 12), ("stone", 4), ("iron", 2), ("treasury", 12000)],"production":[("wood", 9)], "consumption":[],
                "description":"A tree plantation can be used to cultivate alder, beech, or conifer. Wood can be used for construction, or processed into timber."},
-              {"Name":"Tree sapling field","alias":["tree_sapling_field", "tree_sapling_fields", "tree_field", "tree_fields", "tree_sapling", "tree_saplings", "sapling", "saplings"],
+              {"Name":"Tree sapling field",
+               "alias":["tree_sapling_field", "tree_sapling_fields", "tree_field", "tree_fields", "tree_sapling", "tree_saplings", "sapling", "saplings"],
+               "type":"Forestry",
                "price":[("wood", 6), ("stone", 2), ("treasury", 6000)],"production":[("wood", 4)], "consumption":[],"type":"Forestry",
                "description":"A field can be used to plant tree saplings. Wood can be used for construction, or processed into timber."},
-              {"Name":"Sawmill","alias":["sawmill", "sawmills"],"type":"Forestry",
+              {"Name":"Sawmill",
+               "alias":["sawmill", "sawmills"],
+               "type":"Forestry",
                "price":[("wood", 10), ("iron", 1), ("treasury", 9000)],"production":[("timber", 4)], "consumption":[("wood", 4)],
                "description":"A sawmill planes wood into lumber. Planed timber can be used for construction. Sawmills need a supply of wood to operate."},
-              {"Name":"Biomass pellet plant","alias":["biomass_pellet_plant", "biomass_pellet_plants", "biomass_plant", "biomass_plants", "pellet_plant", "pellet_plants", "biomass", "pellet", "pellets", "bio"],"type":"Forestry",
+              {"Name":"Biomass pellet plant",
+               "alias":["biomass_pellet_plant", "biomass_pellet_plants", "biomass_plant", "biomass_plants", "pellet_plant", "pellet_plants", "biomass", "pellet", "pellets", "bio"],
+               "type":"Forestry",
                "price":[("timber", 8), ("steel", 6), ("concrete", 3), ("treasury", 60000)],"production":[("paper", 20)], "consumption":[("wood", 14)],
                "description":"A biomass pellet plant processes wood into biomass pellets. Paper can be used for printing. Biomass pellet plants need a supply of wood to operate."},
-              {"Name":"Engineered wood plant","alias":["engineered_wood_plant", "engineered_wood_plants", "wood_plant", "wood_plants", "engineered", "eng"],"type":"Forestry",
+              {"Name":"Engineered wood plant",
+               "alias":["engineered_wood_plant", "engineered_wood_plants", "wood_plant", "wood_plants", "engineered", "eng"],
+               "type":"Forestry",
                "price":[("timber", 6), ("steel", 3), ("concrete", 2), ("treasury", 20000)],"production":[("timber", 10)], "consumption":[("wood", 8)],
                "description":"An engineered wood plant engineers wood into lumber. Timber can be used for construction. Engineered wood plants need a supply of wood to operate."},
-              {"Name":"Pulp mill","alias":["pulp_mill", "pulp_mills", "pulp"],"type":"Forestry",
+              {"Name":"Pulp mill",
+               "alias":["pulp_mill", "pulp_mills", "pulp"],
+               "type":"Forestry",
                "price":[("timber", 3), ("iron", 1), ("stone", 3), ("treasury",15000)],"production":[("paper", 5)], "consumption":[("wood", 5)],
                "description":"A pulp mill pulps wood into paper, which can be used for printing. Pulp mills need a supply of wood to operate."},
-              {"Name":"Quarry","alias":["quarry", "quarries"],"type":"Mining",
+              {"Name":"Quarry",
+               "alias":["quarry", "quarries"],
+               "type":"Mining",
                "price":[("wood", 3), ("iron", 1), ("treasury", 5000)],"production":[("stone", 5)], "consumption":[],
                "description":"A quarry excavates stone from the earth for construction."},
-              {"Name":"Ore mine","alias":["ore_mine", "ore_mines", "mine", "mines"],"type":"Mining",
+              {"Name":"Ore mine",
+               "alias":["ore_mine", "ore_mines", "mine", "mines"],
+               "type":"Mining",
                "price":[("wood", 4), ("treasury", 6000)],"production":[("ore", 8)], "consumption":[],
                "description":"An ore mine excavates ore from Earth's ore deposits."},
-              {"Name":"Ore grinding mill","alias":["ore_grinding_mill", "ore_grinding_mills", "ore_grinder", "grinder", "grinding", "grinding_mill", "grinding_mills", "grinders", "grind"],"type":"Mining",
+              {"Name":"Ore grinding mill",
+               "alias":["ore_grinding_mill", "ore_grinding_mills", "ore_grinder", "grinder", "grinding", "grinding_mill", "grinding_mills", "grinders", "grind"],
+               "type":"Mining",
                "price":[("wood", 5), ("iron", 1), ("stone", 3), ("treasury", 10000)],"production":[(random.choice(grinder), 1), (random.choice(grinder), 1), (random.choice(grinder), 1), (random.choice(grinder), 1), (random.choice(grinder), 1)], "consumption":[("ore", 5)],
                "description":"An ore grinding mill grinds ore into usable metals. Ore grinding mills need a supply of ore to operate."},
-              {"Name":"Glass manufacturing plant","alias":["glass_manufacturing_plant", "glass_manufacturing_plants", "glass_manufactory"],"type":"Mining",
+              {"Name":"Glass manufacturing plant",
+               "alias":["glass_manufacturing_plant", "glass_manufacturing_plants", "glass_manufactory"],
+               "type":"Mining",
                "price":[("timber", 6), ("iron", 3), ("stone", 5), ("treasury", 20000)],"production":[("glass", 3)], "consumption":[("ore", 3)],
                "description":"A glass manufacturing plant manufactures ores into sheets of glass. Glass manufacturing plants need a supply of ore to operate."},
-              {"Name":"Rotary kiln plant","alias":["rotary_kiln_plant", "rotary_kiln_plants", "rotary_kiln", "rotary"],"type":"Mining",
+              {"Name":"Rotary kiln plant",
+               "alias":["rotary_kiln_plant", "rotary_kiln_plants", "rotary_kiln", "rotary"],
+               "type":"Mining",
                "price":[("steel", 5), ("concrete", 3), ("treasury", 60000)],"production":[(random.choice(rotary), 5), (random.choice(rotary), 5), (random.choice(rotary), 5), (random.choice(rotary), 5), (random.choice(rotary), 5), (random.choice(rotary), 5), ], "consumption":[("ore", 27)],
                "description":"A rotary kiln plant heats ore to form metals. Rotary kiln plants need a supply of ore to operate."},
-              {"Name":"Fiberglass plant","alias":["fiberglass_plant", "fiberglass_plants", "fiberglass", "fiber", "fibers", "fib", "fibs"],"type":"Mining",
+              {"Name":"Fiberglass plant",
+               "alias":["fiberglass_plant", "fiberglass_plants", "fiberglass", "fiber", "fibers", "fib", "fibs"],
+               "type":"Mining",
                "price":[("steel", 6), ("concrete", 3), ("treasury", 75000)],"production":[("glass", 12)], "consumption":[("ore", 11)],
                "description":"A fiberglass plant produces glass. Fiberglass plants need a supply of ore to operate."},
-              {"Name":"Oil rig","alias":["oil_rig", "oil_rigs", "rig", "rigs"],"type":"Drilling",
+              {"Name":"Oil rig",
+               "alias":["oil_rig", "oil_rigs", "rig", "rigs"],
+               "type":"Drilling",
                "price":[("wood", 25), ("steel", 4), ("treasury", 90000)],"production":[("oil", 6)], "consumption":[],
                "description":"An oil rig extracts oil from the earth."},
-              {"Name":"Oil sludge pyrolysis plant","alias":["oil_sludge_prolysis_plant", "oil_sludge_pyrolysis_plants", "oil_sludge", "sludge", "pyrolysis"],"type":"Drilling",
+              {"Name":"Oil sludge pyrolysis plant",
+               "alias":["oil_sludge_prolysis_plant", "oil_sludge_pyrolysis_plants", "oil_sludge", "sludge", "pyrolysis"],
+               "type":"Drilling",
                "price":[("steel", 10), ("concrete", 4), ("treasury", 140000)],"production":[("petroleum", 3)], "consumption":[("oil", 3)],
                "description":"An oil sludge pyrolysis plant refines oil into petroleum. Oil sludge pyrolysis plants need a supply of oil to operate."},
-              {"Name":"Petrochemical plant","alias":["petrochemical_plant", "petrochemical_plants", "petrochemical", "petrochemicals", "petro", "petros"],"type":"Drilling",
+              {"Name":"Petrochemical plant",
+               "alias":["petrochemical_plant", "petrochemical_plants", "petrochemical", "petrochemicals", "petro", "petros"],
+               "type":"Drilling",
                "price":[("steel", 10), ("concrete", 4), ("treasury", 140000)],"production":[("plastic", 3)], "consumption":[("oil", 3)],
                "description":"A petrochemical plant produces polymers and oilgomers. Plastic can be processed into toys. Petrochemical plants need a supply of oil to operate."},
-              {"Name":"Waste oil refining plant","alias":["waste_oil_refining_plant", "waste_oil_refining_plants", "waste_oil_refinery", "waste_oil_refineries", "waste_oil", "waste"],"type":"Drilling",
+              {"Name":"Waste oil refining plant",
+               "alias":["waste_oil_refining_plant", "waste_oil_refining_plants", "waste_oil_refinery", "waste_oil_refineries", "waste_oil", "waste"],
+               "type":"Drilling",
                "price":[("steel", 25), ("concrete", 12), ("gold", 2), ("treasury", 400000)],"production":[("petroleum", 7)], "consumption":[("oil", 6)],
                "description":"A waste oil refining plant produces petroleum. Waste oil refining plants need a supply of oil to operate."},
-              {"Name":"Naphtha cracker plant","alias":["naphtha_cracker_plant", "naphtha_cracker_plants", "cracker_plant", "cracker_plants", "cracker", "crackers", "naphtha", "naphthas"],"type":"Drilling",
+              {"Name":"Naphtha cracker plant",
+               "alias":["naphtha_cracker_plant", "naphtha_cracker_plants", "cracker_plant", "cracker_plants", "cracker", "crackers", "naphtha", "naphthas"],
+               "type":"Drilling",
                "price":[("steel", 25), ("concrete", 12), ("gold", 2), ("treasury", 400000)],"production":[("plastic", 7)], "consumption":[("oil", 6)],
                "description":"A naphtha cracker plant produces plastics. Plastic can be processed into toys and household plastic. Naphtha cracker plants need a supply of oil to operate."},
-              {"Name":"Seafood factory","alias":["seafood_factory", "seafood_factories"],"type":"Processing",
+              {"Name":"Seafood factory",
+               "alias":["seafood_factory", "seafood_factories"],
+               "type":"Processing",
                "price":[("steel", 25), ("concrete", 20), ("timber", 10), ("treasury", 300000)],"production":[("seafood", 15)], "consumption":[("fish", 30), ("plastic", 5)],
                "description":"A seafood factory processes fish into seafood products for human feed. Seafood factories need supplies of fish and plastic to operate."},
-              {"Name":"Furniture factory","alias":["furniture_factory", "furniture_factories"],"type":"Processing",
+              {"Name":"Furniture factory",
+               "alias":["furniture_factory", "furniture_factories"],
+               "type":"Processing",
                "price":[("steel", 30), ("concrete", 20), ("timber", 10), ("treasury", 410000)],"production":[("item", 10)], "consumption":[("timber", 16), ("paper", 5)],
                "description":"A furniture factory manufactures furniture for profit. Furniture factories need supplies of timber and paper to operate."},
-              {"Name":"Bakery","alias":["bakery", "bakeries", "baker", "bake"],"type":"Processing",
+              {"Name":"Bakery",
+               "alias":["bakery", "bakeries", "baker", "bake"],
+               "type":"Processing",
                "price":[("steel", 10), ("concrete", 10), ("timber", 15), ("treasury", 380000)],"production":[("pastries", 12)], "consumption":[("meat", 7), ("crops", 5), ("flour", 15)],
                "description":"A bakery produces pastries for human feed. Bakeries need supply of meat, crops, and flour to operate."},
-              {"Name":"Steel plant","alias":["steel_plant", "steel_plants", "steel_factory", "steel_factories", "forgery", "forgeries", "steelworks"],"type":"Processing",
+              {"Name":"Steel plant",
+               "alias":["steel_plant", "steel_plants", "steel_factory", "steel_factories", "forgery", "forgeries", "steelworks"],
+               "type":"Processing",
                "price":[("stone", 20), ("iron", 15), ("treasury", 60000)],"production":[("steel", 20)], "consumption":[("iron", 15)],
                "description":"A forgery processes iron into steel and machine parts. Steel plants need a supply of iron to operate."},
-              {"Name":"Household plastic factory","alias":["household_plastic_factory", "household_plastic_factories"],"type":"Processing",
+              {"Name":"Household plastic factory",
+               "alias":["household_plastic_factory", "household_plastic_factories"],
+               "type":"Processing",
                "price":[("steel", 20), ("concrete", 10), ("timber", 10), ("treasury", 300000)],"production":[("household plastic", 50)], "consumption":[("petroleum", 2), ("plastic", 15)],
                "description":"A household plastic factory produces household plastic products for profit. Household plastic factories need supplies of petroleum and plastic to operate."},
-              {"Name":"Toy factory","alias":["toy_factory", "toy_factories"],"type":"Processing",
+              {"Name":"Toy factory",
+               "alias":["toy_factory", "toy_factories"],
+               "type":"Processing",
                "price":[("steel", 18), ("concrete", 10), ("timber", 10), ("treasury", 360000)],"production":[("toys", 40)], "consumption":[("paper", 5), ("timber", 15), ("plastic", 25)],
                "description":"A toy factory produces toys to entertain the children whilst making a profit. Toy factories need supplies of paper, timber, and plastic to operate."},
-              {"Name":"Printing press","alias":["printing_press", "printing_presses", "book_factory", "book_factories", "printer", "printers", "press"],"type":"Processing",
+              {"Name":"Printing press",
+               "alias":["printing_press", "printing_presses", "book_factory", "book_factories", "printer", "printers", "press"],
+               "type":"Processing",
                "price":[("steel", 16), ("concrete", 6), ("timber", 15), ("treasury", 160000)],"production":[("books", 20)], "consumption":[("paper", 30), ("plastic", 5)],
                "description":"A printing press prints paper into reading material for profit. Printing presses need supplies of paper and plastic to operate."},
-              {"Name":"Lemonade factory","alias":["lemonade_factory", "lemonade_factories"],"type":"Processing",
+              {"Name":"Lemonade factory",
+               "alias":["lemonade_factory", "lemonade_factories"],
+               "type":"Processing",
                "price":[("steel", 18), ("concrete", 8), ("timber", 10), ("treasury", 340000)],"production":[("lemonade", 30)], "consumption":[("crops", 30), ("plastic", 10)],
                "description":"A lemonade factory produces refreshing lemonade for human consumption. Lemonade factories need supplies of crops and plastic to operate."},
-              {"Name":"Electronics factory","alias":["electronics_factory", "electronics_factories", "foxconn", "foxconns"],"type":"Processing",
+              {"Name":"Electronics factory",
+               "alias":["electronics_factory", "electronics_factories", "foxconn", "foxconns"],
+               "type":"Processing",
                "price":[("steel", 20), ("concrete", 8), ("timber", 10), ("copper", 4), ("treasury", 600000)],"production":[("electronics", 10)], "consumption":[("plastic", 9), ("glass", 9), ("copper", 15)],
                "description":"An electronics factory produces electronics for profit. Electronics factories need supplies of plastic, glass, and copper to operate."},
-              {"Name":"Textile mill","alias":["textile_mill", "textile_mills", "clothing_factory", "clothing_factories", "textile", "textiles"],"type":"Processing",
+              {"Name":"Textile mill",
+               "alias":["textile_mill", "textile_mills", "clothing_factory", "clothing_factories", "textile", "textiles"],
+               "type":"Processing",
                "price":[("iron", 20), ("steel", 4), ("treasury", 125000)],"production":[("clothing", 35)], "consumption":[("meat", 6), ("crops", 10), ("plastic", 8)],
                "description":"A textile mill produces textile clothing for profit. Textiler mills need supplies of meat, crops, and plastic to operate."},
-              {"Name":"Petroleum refinery","alias":["petroleum_refinery", "petroleum_refineries", "refinery", "refineries"],"type":"Processing",
+              {"Name":"Petroleum refinery",
+               "alias":["petroleum_refinery", "petroleum_refineries", "refinery", "refineries"],
+               "type":"Processing",
                "price":[("steel", 20), ("concrete", 10), ("timber", 12), ("treasury", 240000)],"production":[("fuel", 30)], "consumption":[("plastic", 5), ("petroleum", 25), ("iron", 5)],
                "description":"A petroleum refinery refines petroleum into fuel. Petroleum refineries need supplies of petroleum, plastic, and iron to operate."},
-              {"Name":"Soft paper factory","alias":["soft_paper_factory", "soft_paper_factories", "tissue_factory", "tissue_factories"],"type":"Processing",
+              {"Name":"Soft paper factory",
+               "alias":["soft_paper_factory", "soft_paper_factories", "tissue_factory", "tissue_factories"],
+               "type":"Processing",
                "price":[("steel", 20), ("concrete", 10), ("timber", 12), ("treasury", 460000)],"production":[("tissues", 65)], "consumption":[("crops", 8), ("paper", 25), ("petroleum", 25), ("iron", 5)],
                "description":"A soft paper factory softens paper into tissues and toilet paper. Soft paper factories need supplies of crops, paper, petroleum, and plastic to operate."},
-              {"Name":"Car factory","alias":["car_factory", "car_factories", "ford", "fords"],"type":"Processing",
+              {"Name":"Car factory",
+               "alias":["car_factory", "car_factories", "ford", "fords"],
+               "type":"Processing",
                "price":[("steel", 40), ("concrete", 10), ("timber", 10), ("treasury", 1200000)],"production":[("cars", 12)], "consumption":[("meat", 10), ("plastic", 15), ("petroleum", 25), ("iron", 5)],
                "description":"A car factory manufactures cars and other automobiles for profit. Car factories need supplies of meat, plastic, glass, and iron to operate."},
-              {"Name":"Food processing facility","alias":["food_processing_facility", "food_processing_facilities", "food_factory", "food_factories", "food_processor", "food_processors", "food_processing_factory", "food_processing_factories"],"type":"Processing",
+              {"Name":"Food processing facility",
+               "alias":["food_processing_facility", "food_processing_facilities", "food_factory", "food_factories", "food_processor", "food_processors", "food_processing_factory", "food_processing_factories"],
+               "type":"Processing",
                "price":[("steel", 15), ("concrete", 10), ("timber", 10), ("treasury", 400000)],"production":[("food", 20)], "consumption":[("crops", 16), ("meat", 20), ("flour", 10), ("paper", 4), ("plastic", 6)],
                "description":"A food factory manufactures convenience food for human feed. Food factories need supplies of crops, meat, flour, paper, and plastic to operate."},
-              {"Name":"Creamery","alias":["milking_parlor", "milking_parlors"],"type":"Agriculture",
+              {"Name":"Creamery",
+               "alias":["milking_parlor", "milking_parlors"],
+               "type":"Agriculture",
                "price":[("steel", 3), ("concrete", 1), ("timber", 2), ("treasury", 24000)],"production":[("dairy", 9)], "consumption":[("crops", 6)],
                "description":"A milking parlor milks cows into dairy products, which can be used for human feed. Milking parlors need a supply of crops to operate."},
-              {"Name":"Sneaker factory","alias":["sneaker_factory", "sneaker_factories"],"type":"Processing",
+              {"Name":"Sneaker factory",
+               "alias":["sneaker_factory", "sneaker_factories"],
+               "type":"Processing",
                "price":[("steel", 15), ("concrete", 10), ("timber", 6), ("treasury", 430000)],"production":[("sneakers", 20)], "consumption":[("crops", 12), ("meat", 1), ("paper", 8), ("petroleum", 10), ("plastic", 15)],
                "description":"A sneaker factory manufactures shoes for profit. Sneaker factories need supplies of crops, meat, paper, petroleum, and plastic to operate."},
-              {"Name":"Modular house factory","alias":["modular_house_factory", "modular_house_factories", "house_factory", "house_factories"],"type":"Processing",
+              {"Name":"Modular house factory",
+               "alias":["modular_house_factory", "modular_house_factories", "house_factory", "house_factories"],
+               "type":"Processing",
                "price":[("steel", 20), ("concrete", 20), ("timber", 20), ("treasury", 1400000)],"production":[("houses", 40)], "consumption":[("timber", 30), ("plastic", 8), ("glass", 10), ("copper", 4), ("stone", 1), ("steel", 5)],
                "description":"A modular house factory manufactures houses for human residence. Modular house factories need supplies of timber, plastic, glass, copper, stone, and iron to operate."},
-              {"Name":"Shipyard","alias":["shipyard", "shipyards"],"type":"Processing",
+              {"Name":"Shipyard",
+               "alias":["shipyard", "shipyards"],
+               "type":"Processing",
                "price":[("steel", 40), ("copper", 5), ("concrete", 25), ("timber", 20), ("treasury", 4000000)],"production":[("ships", 3)], "consumption":[("timber", 100), ("plastic", 50), ("glass", 30), ("steel", 200)],
                "description":"A shipyard assembles cruise ships for sea travel. Shipyards need supplies of timber, plastic, glass, and iron to operate."},
-              {"Name":"Aluminum factory","alias":["aluminum_factory", "aluminum_factory", "aluminium_factory", "aluminium_factories"],"type":"Processing",
+              {"Name":"Aluminum factory",
+               "alias":["aluminum_factory", "aluminum_factory", "aluminium_factory", "aluminium_factories"],
+               "type":"Processing",
                "price":[("steel", 16), ("concrete", 9), ("timber", 10), ("treasury", 140000)],"production":[("aluminium", 20)], "consumption":[("bauxite", 10)],
                "description":"An aluminium factory processes bauxite into aluminium. Aluminium factories need a supply of bauxite to operate."},
-              {"Name":"Ammunition factory","alias":["ammunition_factory", "ammunition_factories", "ammo_factory", "ammo_factories"],"type":"Processing",
+              {"Name":"Ammunition factory",
+               "alias":["ammunition_factory", "ammunition_factories", "ammo_factory", "ammo_factories"],
+               "type":"Processing",
                "price":[("iron", 10), ("stone", 10), ("timber", 5), ("steel", 6), ("treasury", 85000)],"production":[("ammunition", 120)], "consumption":[("steel", 20), ("copper", 1)],
                "description":"An ammunition factory manufactures ammunition for profit (if personal firearm possession is legal in your country) and for warfare. Ammunition factories need supplies of copper and iron to operate."},
-              {"Name":"Artillery factory","alias":["artillery_factory", "artillery_factories"],"type":"Processing",
+              {"Name":"Artillery factory",
+               "alias":["artillery_factory", "artillery_factories"],
+               "type":"Processing",
                "price":[("steel", 25), ("concrete", 10), ("treasury", 160000)],"production":[("artillery", 10)], "consumption":[("steel", 20)],
                "description":"An artillery factory manufactures artillery for warfare. Artillery factories need a supply of steel to operate."},
-              {"Name":"Concrete factory","alias":["concrete_factory", "concrete_factories"],"type":"Processing",
+              {"Name":"Concrete factory",
+               "alias":["concrete_factory", "concrete_factories"],
+               "type":"Processing",
                "price":[("steel", 10), ("stone", 15), ("treasury", 66000)],"production":[("concrete", 12)], "consumption":[("stone", 10)],
                "description":"A concrete factory manufactures concrete for infrastructure. Concrete factories need a supply of stone to operate."},
-              {"Name":"Firearms factory","alias":["firearms_factory", "firearms_factories", "firearm_factory", "firearm_factories", "small_arms_factory", "small_arms_factories"],"type":"Processing",
+              {"Name":"Firearms factory",
+               "alias":["firearms_factory", "firearms_factories", "firearm_factory", "firearm_factories", "small_arms_factory", "small_arms_factories"],
+               "type":"Processing",
                "price":[("stone", 15), ("steel", 6), ("timber", 10), ("treasury", 120000)],"production":[("firearms", 36)], "consumption":[("timber", 6), ("steel", 20)],
                "description":"A firearms factory manufactures firearms for profit (if personal firearm possession is legal in your country) and for warfare. Firearms factories need supplies of timber and steel to operate."},
               {"Name":"Market","alias":["market", "markets"],"type":"Commercial",#SCRAP
@@ -200,11 +306,7 @@ async def on_ready():
 	print("---------------------")
 	await schedule_update()
 
-@client.command()
-async def today(ctx):
-    await ctx.send(datetime.datetime.now)
-
-#Outdated
+#Outdated, might as well be removed?
 @client.command()
 async def buildingsold(ctx):
     board1 = discord.Embed(title="Building List (Page 1)")
@@ -223,15 +325,38 @@ async def buildingsold(ctx):
     await ctx.send(embed=board2)
     await ctx.send(embed=board3)
 
-#WIP
 @client.command()
 async def buildings(ctx, arg=None):
     if arg == None:
-        board = discord.Embed(title="Buildings Lists (EXPERIMENTAL, USE !buildingsold (might be broken))")
-        board.add_field(name='!buildings agricultural', value='Buildings specializing in agriculture: The growth of grain, vegetables, livestock, cotton, and fish. Processing into food and textiles.')
+        board = discord.Embed(title="Buildings Lists (EXPERIMENTAL)")
+        board.add_field(name='!buildings agriculture', value='Buildings specializing in agriculture: The growth of grain, vegetables, livestock, cotton, and fish. Processing into food and textiles.')
         board.add_field(name='!buildings forestry', value='Buildings specializing in forestry: The harvest of trees. Processing into paper and lumber.')
         board.add_field(name='!buildings mining', value='Buildings specializing in mining: The extraction of stone, coal, and ore. Processing into concrete, metals, minerals, and electricity.')
         board.add_field(name='!buildings drilling', value='Buildings specializing in drilling: The extraction of crude oil. Processing into plastic and petroleum.')
+        await ctx.send(embed=board)
+    elif arg == "agriculture":
+        board = discord.Embed(title="Building List: Agriculture")
+        for building in build_list:
+            if building["type"] == "Agriculture":
+                board.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRICE: {building["price"]}; PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
+        await ctx.send(embed=board)
+    elif arg == "forestry":
+        board = discord.Embed(title="Building List: Forestry")
+        for building in build_list:
+            if building["type"] == "Forestry":
+                board.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRICE: {building["price"]}; PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
+        await ctx.send(embed=board)
+    elif arg == "mining":
+        board = discord.Embed(title="Building List: Mining")
+        for building in build_list:
+            if building["type"] == "Mining":
+                board.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRICE: {building["price"]}; PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
+        await ctx.send(embed=board)
+    elif arg == "drilling":
+        board = discord.Embed(title="Building List: Drilling")
+        for building in build_list:
+            if building["type"] == "Drilling":
+                board.add_field(name=f'{building["Name"]} (!build {building["alias"]})', value=f'{building["description"]} PRICE: {building["price"]}; PRODUCTION: {building["production"]}; CONSUMPTION: {building["consumption"]}')
         await ctx.send(embed=board)
 
 async def schedule_update():
@@ -306,6 +431,57 @@ async def process_consumption(nation, building, item, consume):
     else:
         return True, item
 
+@client.command(aliases=["transfer"])
+async def give(ctx, material=None, recipient=None, quantity=1):
+    founded = await nation(ctx.author)
+    if founded:
+        user = ctx.author
+        if material == None:
+            await ctx.send("Choose a material to donate, a nation to donate to, and a quantity to donate. Try again.")
+            return
+        else:
+            arg = material.lower()
+            for mat in materials:
+                if arg == mat:
+                    nations = await process_nation()
+                    if nations[str(user.id)][arg] < quantity:
+                        await ctx.send(f"You don't have enough {arg} to donate!")
+                        return
+                    elif recipient == None:
+                        await ctx.send(f"Specify a nation to donate your material to and try again.")
+                        return
+                    elif quantity < 0:
+                        await ctx.send("No stealing allowed!")
+                        return
+                    elif quantity == 0:
+                        await ctx.send("You did nothing. Have a nice day.")
+                        return
+                    else:
+                        for rec in nations.values():
+                            if recipient.lower() in rec["Name"].lower():
+                                rec[arg] += quantity
+                                await ctx.send(f"{quantity} {arg} successfully given to **{rec['Name']}**.")
+                                nations[str(user.id)][arg] -= quantity
+                                await savedata(nations)
+                                return
+                        await ctx.send("No such nation could be found.")
+                        return
+            await ctx.send("No such material exists.")
+    else:
+        await ctx.send("You don't have a nation!")
+
+@client.command()
+async def peek(ctx, nation=None):
+    nations = await process_nation()
+    if nation == None:
+        await ctx.send("Provide the name of a nation and try again")
+    else:
+        for rec in nations.values():
+            if nation.lower() in rec["Name"].lower():
+                await ctx.send(rec)
+                return
+        await ctx.send("Nation could not be found")
+
 @client.command()
 async def leaderboard(ctx, arg=None):
     argument = arg.lower()
@@ -328,18 +504,6 @@ async def leaderboard(ctx, arg=None):
 
 @leaderboard.error
 async def leaderboard_error(ctx, error):
-    await ctx.send(error)
-
-#Experimental command
-@client.command()
-async def raw(ctx):
-    nations = await process_nation()
-    await ctx.send(nations)
-    for nation in nations.values():
-        await ctx.send(nation)
-
-@raw.error
-async def rawerror(ctx, error):
     await ctx.send(error)
 
 @client.command()
@@ -415,18 +579,16 @@ async def build(ctx, arg=None, quantity=1):
 async def builderror(ctx, error):
     await ctx.send(error)
 
-@client.command()
+@client.command(aliases=["statistics"])
 async def stats(ctx):
     founded = await nation(ctx.author)
     if founded:
         nations = await process_nation()
-        await ctx.send(nations[str(ctx.author.id)])
+        board = discord.Embed(title=f"{nations[str(ctx.author.id)]['Common Name']}'s Statistics", description=nations[str(ctx.author.id)])
+        board.set_thumbnail(url=nations[str(ctx.author.id)]["Flag"])
+        await ctx.send(embed=board)
     else:
         await ctx.send("You don't have a nation!")
-
-@client.command()
-async def statistics(ctx):
-    await stats(ctx)
 
 @client.command()
 async def inventory(ctx):
@@ -445,7 +607,7 @@ async def inverror(ctx, error):
     await ctx.send(error)
 
 
-@client.command()
+@client.command(aliases=["customise"])
 async def customize(ctx, arg=None):
     founded = await nation(ctx.author)
     if founded:
@@ -644,6 +806,31 @@ async def customize(ctx, arg=None):
             await ctx.send(embed=board)
     else:
         await ctx.send("You don't have a nation!")
+
+#WIP Rework of found command
+@client.command()
+async def foundnew(ctx):
+    nations = await process_nation()
+    if str(ctx.author.id) in nations:
+        await ctx.send("You already have a nation!")
+    else:
+        nations[str(ctx.author.id)] = {}
+        await ctx.send("Welcome to Civilized Chaos! Provide a full name for your nation to get started. (Timeout = 5 minutes, send 'Cancel' to cancel.")
+        def check(response):
+            return response.author.id == ctx.author.id and response.channel.id == ctx.channel.id
+        try:
+            name = await client.wait_for('message', check=check, timeout=300.0)
+        except asyncio.TimeoutError:
+            return
+        else:
+            if name.content.lower() == ('cancel'):
+                await ctx.send('Prompt cancelled.')
+                return
+            elif validators.url(name.content):
+                await ctx.send("You can't set a link as your nation name! Prompt cancelled.")
+            else:
+                await ctx.send(f'You have founded {name.content}! But you haven\'t, this is an experimental command.')
+                return
 
 #Rework this command
 @client.command()
